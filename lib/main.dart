@@ -1,7 +1,6 @@
-import 'package:event_app/blocs/home_bloc.dart';
-import 'package:event_app/pages/event_home_screen.dart';
-import 'package:event_app/pages/home_screen.dart';
-import 'package:event_app/pages/splash_screen.dart';
+import 'package:event_app/ui/event_home/pages/event_home_screen.dart';
+import 'package:event_app/ui/home/pages/home_screen.dart';
+import 'package:event_app/ui/splash/pages/splash_screen.dart';
 import 'package:event_app/size_config.dart';
 import 'package:event_app/style.dart';
 import 'package:flutter/material.dart';

@@ -1,10 +1,10 @@
 import 'package:align_positioned/align_positioned.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:event_app/blocs/event_home_bloc.dart';
-import 'package:event_app/blocs/home_bloc.dart';
 import 'package:event_app/models/event.dart';
-import 'package:event_app/services/EventService.dart';
+import 'package:event_app/repositories/event_repository.dart';
 import 'package:event_app/style.dart';
+import 'package:event_app/ui/event_home/blocs/event_home_bloc.dart';
+import 'package:event_app/ui/event_home/blocs/event_home_bloc_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -17,10 +17,6 @@ class EventHomeScreen extends StatelessWidget {
 
   EventService eventService = EventService.getInstance();
   EventHomeBloc eventHomeBloc = EventHomeBloc();
-
-  void onSelectedDate(DateTime currentDateTime) {
-    eventHomeBloc.selectedDateTimeSubject.sink.add(currentDateTime);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -240,9 +236,7 @@ class EventHomeScreen extends StatelessWidget {
                                   child: InkWell(
                                     splashFactory: InkRipple.splashFactory,
                                     onTap: () {
-                                      var events = eventService.eventsSubject.value;
-                                      eventService.firstNearEventSubject.sink.add(events[0]);
-                                      //eventService.items.sink.add(events);
+                                      eventHomeBloc.blocEvents.sink.add(EventHomeBlocEvents.nearEventsDelete(3));
                                     },
                                   ),
                                 ),
@@ -419,8 +413,8 @@ class DateItem extends StatelessWidget {
                   child: InkWell(
                     splashFactory: InkRipple.splashFactory,
                     onTap: (){
-                      eventHomeBloc.selectedDateTimeSubject.sink.add(currentDateTime);
-                      //eventHomeBloc.blocEvents.sink.add(EventHomeBlocEvents.SELECT_DATE);
+                      //eventHomeBloc.selectedDateTimeSubject.sink.add(currentDateTime);
+                      eventHomeBloc.blocEvents.sink.add(EventHomeBlocEvents.dateChanged(currentDateTime));
                     },
                   ),
                 ),

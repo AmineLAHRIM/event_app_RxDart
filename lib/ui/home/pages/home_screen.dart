@@ -1,12 +1,12 @@
 import 'package:align_positioned/align_positioned.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:event_app/blocs/home_bloc.dart';
-import 'package:event_app/items/popular_event_item.dart';
+import 'package:event_app/list_items/popular_event_item.dart';
 import 'package:event_app/models/event.dart';
 import 'package:event_app/models/message_error.dart';
-import 'package:event_app/pages/event_home_screen.dart';
-import 'package:event_app/services/EventService.dart';
+import 'package:event_app/repositories/event_repository.dart';
+import 'package:event_app/ui/event_home/pages/event_home_screen.dart';
 import 'package:event_app/style.dart';
+import 'package:event_app/ui/home/blocs/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';

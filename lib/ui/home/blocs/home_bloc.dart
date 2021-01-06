@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:event_app/models/event.dart';
-import 'package:event_app/services/EventService.dart';
-import 'package:event_app/services/UserService.dart';
+import 'package:event_app/repositories/event_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -22,8 +21,8 @@ class HomeBloc {
   HomeBloc() {
     eventService.findAll();
     eventService.firstNear();
-/*    print('HomeBloc Constructor');
-    switch (blocEvent.stream.value) {
+    print('HomeBloc Constructor');
+    /*switch (blocEvent.stream.value) {
       case HomeBlocEvents.FETCH_FIRST_NEAR_EVENT:
         fetchFistNearEvent();
         break;
